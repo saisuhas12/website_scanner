@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Scan Results</title>
+</head>
+<body>
+    <h1>Scan Results for {{ scan_results.host }}</h1>
+    <p><strong>Hostname:</strong> {{ scan_results.hostname }}</p>
+    <p><strong>State:</strong> {{ scan_results.state }}</p>
+ 
+    <h3>Open Ports:</h3>
+    <ul>
+        {% for protocol, ports in scan_results.protocols.items() %}
+            <li><strong>Protocol: {{ protocol }}</strong></li>
+            <ul>
+                {% for port in ports %}
+                    <li>Port: {{ port }}</li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </ul>
+ 
+    <a href="/">Scan another target</a>
+</body>
+</html>

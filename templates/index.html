@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Vulnerability Scanner</title>
+</head>
+<body>
+    <h1>Basic Vulnerability Scanner</h1>
+    <form action="/scan" method="post">
+        <label for="target_ip">Target IP Address:</label>
+        <input type="text" id="target_ip" name="target_ip" required>
+    
+        <label for="ports">Ports (e.g., 1-1024):</label>
+        <input type="text" id="ports" name="ports" placeholder="e.g., 1-1024">
+    
+        <label for="scan_type">Scan Type:</label>
+        <select id="scan_type" name="scan_type">
+            <option value="-sS">SYN Scan</option>
+            <option value="-sT">TCP Connect Scan</option>
+            <!-- Add more scan types if needed -->
+        </select>
+    
+        <input type="submit" value="Scan">
+    </form>
+    
+</body>
+</html>
